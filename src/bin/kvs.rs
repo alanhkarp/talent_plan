@@ -21,7 +21,9 @@ fn main() {
     }
 }
 #[derive(Debug, StructOpt)]
+#[structopt(name = "kvs")]
 struct CliCmd {
+    kvs: String,
     #[structopt(subcommand)]
     cmd: Command,
 }
