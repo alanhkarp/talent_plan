@@ -1,9 +1,7 @@
-
+// foo
 use std::process::exit;
 
 use structopt::StructOpt;
-
-use clap::{App, Arg, SubCommand};
 
 fn main() {
     let options = CliCmd::from_args();
@@ -12,7 +10,7 @@ fn main() {
             eprintln!("unimplemented: get {}", key);
             exit(1);
         }
-        Command::Set { key, value }=> {
+        Command::Set { key, value } => {
             eprintln!("unimplemented: set {} {}", key, value);
             exit(1);
         }
@@ -25,27 +23,25 @@ fn main() {
 #[derive(Debug, StructOpt)]
 struct CliCmd {
     #[structopt(subcommand)]
-    cmd: Command
+    cmd: Command,
 }
 #[derive(Debug, StructOpt)]
 enum Command {
     #[structopt(name = "get")]
-    Get { 
+    Get {
         #[structopt(required = true)]
-        key: String
+        key: String,
     },
     #[structopt(name = "set")]
     Set {
         #[structopt(required = true)]
         key: String,
         #[structopt(required = true)]
-        value: String
+        value: String,
     },
     #[structopt(name = "rm")]
     Rm {
         #[structopt(required = true)]
-        key: String
-    }
+        key: String,
+    },
 }
-
-
